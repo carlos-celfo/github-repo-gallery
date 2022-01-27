@@ -9,6 +9,7 @@ const showProjects = async function () {
     `https://api.github.com/users/${username}`
   );
   const data = await projectsRequest.json();
+  console.log(data);
   displayInfo(data);
 };
 
@@ -27,7 +28,7 @@ const displayInfo = function (data) {
     <p><strong>Name:</strong> ${data.name}</p>
     <p><strong>Bio:</strong> ${data.bio}</p>
     <p><strong>Location:</strong> ${data.location}</p>
-    <p><strong>Number of public repos:</strong> ${data.repos}</p>
+    <p><strong>Number of public repos:</strong> ${data.public_repos}</p>
     </div>`;
   overview.append(newDiv);
 };
