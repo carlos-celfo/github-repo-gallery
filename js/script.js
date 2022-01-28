@@ -1,6 +1,7 @@
 // This variables targets where the profile information will appear//
 const overview = document.querySelector(".overview");
 const username = "carlos-celfo";
+const repoList = document.querySelector(".repo-list");
 
 // Fecth API JSON data //
 
