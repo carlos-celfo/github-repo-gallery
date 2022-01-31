@@ -33,3 +33,13 @@ const displayInfo = function (data) {
     </div>`;
   overview.append(newDiv);
 };
+
+// Fetching the repos //
+
+const myRepos = async function () {
+  const reposRequest = await fetch(
+    `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
+  );
+  const reposData = await reposRequest.json();
+  console.log(reposData);
+};
