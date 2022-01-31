@@ -32,6 +32,7 @@ const displayInfo = function (data) {
     <p><strong>Number of public repos:</strong> ${data.public_repos}</p>
     </div>`;
   overview.append(newDiv);
+  myRepos();
 };
 
 // Fetching the repos //
@@ -40,20 +41,19 @@ const myRepos = async function () {
   const reposRequest = await fetch(
     `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
   );
-  const repos = await reposRequest.json();
-  console.log(repos);
+  const repoData = await reposRequest.json();
+  repoInfo(repoData);
 };
-
-myRepos();
 
 // Function to display info about repos //
 
 const repoInfo = function (repos) {
-  for (let repos of repoInfo) {
-    let document.createElement("li");
-    li.classList.add("repo");
-    li.innerHTML=`<h3>${repo.name}</h3>`;
+  for (let repo of repos) {
+    let repoItem = document.createElement("li");
+    repoItem.classList.add("repo");
+    repoItem.innerHTML = `<h3>${repo.name}</h3>`;
+    repoList.append(repoItem);
   }
-  li.append(".repoList");
 };
 
+//Why for creating a document we need a new variable?//
