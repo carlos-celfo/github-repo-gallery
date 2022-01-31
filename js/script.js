@@ -40,6 +40,20 @@ const myRepos = async function () {
   const reposRequest = await fetch(
     `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
   );
-  const reposData = await reposRequest.json();
-  console.log(reposData);
+  const repos = await reposRequest.json();
+  console.log(repos);
 };
+
+myRepos();
+
+// Function to display info about repos //
+
+const repoInfo = function (repos) {
+  for (let repos of repoInfo) {
+    let document.createElement("li");
+    li.classList.add("repo");
+    li.innerHTML=`<h3>${repo.name}</h3>`;
+  }
+  li.append(".repoList");
+};
+
