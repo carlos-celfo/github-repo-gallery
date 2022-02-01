@@ -1,7 +1,7 @@
 // This variables targets where the profile information will appear//
 const overview = document.querySelector(".overview");
 const username = "carlos-celfo";
-const listOfRepos = document.querySelector(".repo-list");
+const repoList = document.querySelector(".repo-list");
 const allRepos = document.querySelector(".repos");
 const individualRepo = document.querySelector(".repo-data");
 
@@ -53,17 +53,56 @@ const repoInfo = function (repos) {
     let repoItem = document.createElement("li");
     repoItem.classList.add("repo");
     repoItem.innerHTML = `<h3>${repo.name}</h3>`;
-    listOfRepos.append(repoItem);
+    repoList.append(repoItem);
   }
 };
 
-//Why for creating a document we need a new variable?//
-
 // Adding a click event //
 
-const repoList = listOfRepos.addEventListener("click", function (e) {
+repoList.addEventListener("click", function (e) {
   if (e.target.matches("h3")) {
-    let repoName = (repoItem.innerText = `${repo.name}`);
+    let repoName = e.target.innerText;
+    console.log(specificRepo(repoName));
   }
-  console.log(repoName);
 });
+
+// Function to get specific repo info //
+
+const specificRepo = async function (repoName) {
+  const specificRequest = await fetch(
+    `https://api.github.com/repos/${username}/${repoName}`
+  );
+  const repoInfo = await specificRequest.json();
+  console.log(repoInfo);
+  // Grab languages //
+  const fetchLanguages = await fetch(repoInfo.languages_url);
+  const languageData = await fetchLanguages.json();
+  // Make a list of languages //
+  const languages = [];
+  for (const language in languageData) {
+    languages.push(language);
+  }
+
+  displayRepo(repoInfo, languages);
+};
+
+// Function to display specific repo info //
+
+const displayRepo = function (repoInfo, languages) {
+  individualRepo.innerHTML = "";
+  individualRepo.classList.remove("hide");
+  allRepos.classList.add("div");
+  let div = document.createElement("div");
+  div.innerHTML = `
+  <h3>Name: ${repoInfo.name}</h3>
+  <p>Description: ${repoInfo.description}</p>
+  <p>Default Branch: ${repoInfo.default_branch}</p>
+  <p>Languages: ${languages.join(", ")}</p>
+  <a class="visit" href="${
+    repoInfo.html_url
+  }" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>
+  `;
+  individualRepo.append(div);
+};
+
+// in github info appears the JS API different, im using shell and it works... how would i use the one in JS?//
