@@ -104,5 +104,3 @@ const displayRepo = function (repoInfo, languages) {
   `;
   individualRepo.append(div);
 };
-
-// in github info appears the JS API different, im using shell and it works... how would i use the one in JS?//
