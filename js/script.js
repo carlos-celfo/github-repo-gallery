@@ -1,7 +1,9 @@
 // This variables targets where the profile information will appear//
 const overview = document.querySelector(".overview");
 const username = "carlos-celfo";
-const repoList = document.querySelector(".repo-list");
+const listOfRepos = document.querySelector(".repo-list");
+const allRepos = document.querySelector(".repos");
+const individualRepo = document.querySelector(".repo-data");
 
 // Fecth API JSON data //
 
@@ -10,7 +12,6 @@ const showProjects = async function () {
     `https://api.github.com/users/${username}`
   );
   const data = await projectsRequest.json();
-  console.log(data);
   displayInfo(data);
 };
 
@@ -52,8 +53,17 @@ const repoInfo = function (repos) {
     let repoItem = document.createElement("li");
     repoItem.classList.add("repo");
     repoItem.innerHTML = `<h3>${repo.name}</h3>`;
-    repoList.append(repoItem);
+    listOfRepos.append(repoItem);
   }
 };
 
 //Why for creating a document we need a new variable?//
+
+// Adding a click event //
+
+const repoList = listOfRepos.addEventListener("click", function (e) {
+  if (e.target.matches("h3")) {
+    let repoName = (repoItem.innerText = `${repo.name}`);
+  }
+  console.log(repoName);
+});
