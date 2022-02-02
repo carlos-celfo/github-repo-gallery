@@ -4,6 +4,8 @@ const username = "carlos-celfo";
 const repoList = document.querySelector(".repo-list");
 const allRepos = document.querySelector(".repos");
 const individualRepo = document.querySelector(".repo-data");
+const backButton = document.querySelector(".view-repos");
+const filterInput = document.querySelector(".filter-repos");
 
 // Fecth API JSON data //
 
@@ -62,7 +64,7 @@ const repoInfo = function (repos) {
 repoList.addEventListener("click", function (e) {
   if (e.target.matches("h3")) {
     let repoName = e.target.innerText;
-    console.log(specificRepo(repoName));
+    specificRepo(repoName);
   }
 });
 
@@ -91,6 +93,7 @@ const specificRepo = async function (repoName) {
 const displayRepo = function (repoInfo, languages) {
   individualRepo.innerHTML = "";
   individualRepo.classList.remove("hide");
+  repoList.classList.add("hide");
   allRepos.classList.add("div");
   let div = document.createElement("div");
   div.innerHTML = `
