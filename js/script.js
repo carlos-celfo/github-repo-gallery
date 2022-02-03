@@ -134,7 +134,3 @@ filterInput.addEventListener("input", function (e) {
     }
   }
 });
-
-/* Why
-Check to see if the lowercase repo text includes the lowercase search text. If the repo contains the text, show it. If it doesn’t contain the text, hide the repo.
-I put my "result" variable as the result of the if and else if (result.classList.remove("hide") and it didnt work, but the variable itself equals the repo... why it works with the repo and not the variable?)
