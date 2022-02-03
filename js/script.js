@@ -117,3 +117,9 @@ backButton.addEventListener("click", function () {
   individualRepo.classList.add("hide");
   backButton.classList.add("hide");
 });
+
+// Input event to the search box//
+
+filterInput.addEventListener("input", function (e) {
+  let input = e.target.value;
+});
