@@ -51,6 +51,7 @@ const myRepos = async function () {
 // Function to display info about repos //
 
 const repoInfo = function (repos) {
+  filterInput.classList.remove("hide");
   for (let repo of repos) {
     let repoItem = document.createElement("li");
     repoItem.classList.add("repo");
@@ -106,4 +107,13 @@ const displayRepo = function (repoInfo, languages) {
   }" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>
   `;
   individualRepo.append(div);
+  backButton.classList.remove("hide");
 };
+
+// Event for Back button //
+
+backButton.addEventListener("click", function () {
+  allRepos.classList.remove("hide");
+  individualRepo.classList.add("hide");
+  backButton.classList.add("hide");
+});
