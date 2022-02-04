@@ -113,7 +113,7 @@ const displayRepo = function (repoInfo, languages) {
 // Event for Back button //
 
 backButton.addEventListener("click", function () {
-  allRepos.classList.remove("hide");
+  repoList.classList.remove("hide");
   individualRepo.classList.add("hide");
   backButton.classList.add("hide");
 });
