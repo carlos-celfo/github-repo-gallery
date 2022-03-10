@@ -134,5 +134,3 @@ filterInput.addEventListener("input", function (e) {
     }
   }
 });
-
-// Project is done //
