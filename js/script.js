@@ -107,7 +107,6 @@ const displayRepo = function (repoInfo, languages) {
   }" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>
   `;
   individualRepo.append(div);
-  // backButton.classList.remove("hide");//
 };
 
 // Event for Back button //
