@@ -35,12 +35,12 @@ const displayInfo = function (data) {
     <p><strong>Number of public repos:</strong> ${data.public_repos}</p>
     </div>`;
   overview.append(newDiv);
-  myRepos();
+  myRepos(username);
 };
 
 // Fetching the repos //
 
-const myRepos = async function () {
+const myRepos = async function (username) {
   const reposRequest = await fetch(
     `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
   );
@@ -76,7 +76,7 @@ const specificRepo = async function (repoName) {
     `https://api.github.com/repos/${username}/${repoName}`
   );
   const repoInfo = await specificRequest.json();
-  console.log(repoInfo);
+
   // Grab languages //
   const fetchLanguages = await fetch(repoInfo.languages_url);
   const languageData = await fetchLanguages.json();
@@ -92,10 +92,10 @@ const specificRepo = async function (repoName) {
 // Function to display specific repo info //
 
 const displayRepo = function (repoInfo, languages) {
+  backButton.classList.remove("hide");
   individualRepo.innerHTML = "";
   individualRepo.classList.remove("hide");
-  repoList.classList.add("hide");
-  allRepos.classList.add("div");
+  allRepos.classList.add("hide");
   let div = document.createElement("div");
   div.innerHTML = `
   <h3>Name: ${repoInfo.name}</h3>
